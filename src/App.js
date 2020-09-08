@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import { render } from '@testing-library/react';
+import {Welcome} from './second-lesson/renderElements'
+import {Comment } from './third-lesson/comment'
+import {Clock } from './fourth-lesson/clock'
+import { Toggle } from './fifth-lesson/toggle';
+const name = 'Josh Perez';
+const element1 = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world 1!'
+);
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+const comment = {
+  date: new Date(),
+  text: 'I hope you enjoy learning React!',
+  author: {
+    name: 'Hello Kitty',
+    avatarUrl: 'https://placekitten.com/g/64/64',
+  },
+};
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div>
+      <h1>Hello, {name}</h1>
+      <p> {element1}</p>
+      <Welcome name="Vidhya" />
+      <Welcome name="Lakshmi" />
+      <Comment
+        date={comment.date}
+        text={comment.text}
+        author={comment.author}
+      />
+      <Clock />
+      <Toggle />
+      </div>
+    );
+  
+};
 
 export default App;
